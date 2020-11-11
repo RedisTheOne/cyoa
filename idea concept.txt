@@ -1,0 +1,60 @@
+Strength 0	Endurance 0	Dexterity 0	Agility	0	Magic 0
+
+Intelligence	Wisdom
+
+
+Get 20 starting points
+
+1 point to level each combat stat
+
+
+Classes (4 pt each) stats rounded up:
+
+Knight: 1.5x Str; 1.5x End;  1.5x Agl	
+
+Rouge: 1.5x Dex; 2x Agl
+
+Tank: 2.5x End 
+
+Duelist: 2x Dex; 1.5x Agl 
+
+Mage: 2.5x Mag
+
+Berserker: 2x Strength; 1.5x End
+
+
+
+Equiptment (for 1 pt of Str get +4 Wgh capacity)
+
+Broadsword	    3 Pwr	6 Wgh
+Crossbow	    2 Pwr	8 Wgh
+Rapier		    2 Pwr	3 Wgh (3 Pwr id Dex >= 5)
+
+Magic Wand	    2 Pwr	1 Wgh (Needs magic >= 4)
+Magic Staff	    4 Pwr	3 Wgh (Needs magic >= 7)
+
+Light Armor	    1 Pwr	4 Wgh
+Medium Armor	3 Pwr	7 Wgh
+Heavy Armor	    5 Pwr	10 Wgh
+
+Small Shield	1 Pwr	3 Wgh (2 Pwr if Agl >= 5)
+Medium Shield	3 Pwr	7 Wgh
+Tower Shield	5 Pwr	10 Wgh
+
+Mana Shield	    4 Pwr	- Wgh (Needs magic >= 6)
+Mage Robes	    3 Pwr	2 Wgh (Needs magic >= 2)
+
+Enhancments
+
+Blade metal: Iron 0pt; Steel 2pt 1.5x Pwr; Silver 4pt 2x Pwr  
+Armor and Shield metal: Iron 0pt; Silver 4pt 2x Pwr; Adamantine 6pt 3x Pwr
+Magic alloys: Enchanted Wood 1pt; Small Magic Stone Core 3pt 1.5x Pwr; Medium Magic Stone Core 5pt 3x Pwr;  
+
+Enchantments
+Sharper & Sturdier (Weapons): 3pt 2x Pwr
+Resistant (Armor & Shields) : 3pt 2x Pwr
+Magic Channeling Efficency (Wands, Staffs & Robes): 3pt 2x Pwr
+
+Total Combat Power = Total Stats * 1 + (Total Pwr * 0,1)
+
+

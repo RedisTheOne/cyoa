@@ -1,0 +1,363 @@
+/** @format */
+
+/* Main header */
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+/* 2ndary headers */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+/* Paragraphs */
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&display=swap");
+
+/* Variables */
+$primaryColor: #212529;
+$secondaryColor: #495057;
+$bg: #343a40;
+@mixin btnPseudoElement {
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    transition: 0.6s;
+    left: 0px;
+}
+
+body {
+    margin: 0px;
+    background-color: $bg;
+    color: white;
+    font-family: "Hind Madurai", sans-serif;
+}
+
+.container {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-family: "Anton";
+    font-weight: 300;
+    font-size: 70px;
+    margin-bottom: -18px;
+}
+
+h2 {
+    font-family: "Fredoka One";
+    font-weight: 300;
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.banner {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    p {
+        font-size: 18px;
+    }
+}
+
+.section {
+    display: flex;
+    div {
+        flex: 1;
+    }
+}
+
+.stats {
+    margin-right: 60px;
+    .stat-title {
+        font-style: italic;
+        margin-bottom: 4px;
+    }
+    input {
+        font-size: 16px;
+        width: 96%;
+        padding: 8px 2% 8px 2%;
+        outline: none;
+        border: #dee2e6 1px solid;
+        color: white;
+        background-color: transparent;
+        border-radius: 6px;
+    }
+}
+
+.classes {
+    margin-left: 60px;
+    .classes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        justify-content: center;
+        div {
+            text-align: center;
+            background-color: $primaryColor;
+            padding: 14px;
+            border-radius: 6px;
+        }
+        p {
+            margin-top: 4px;
+            margin-bottom: 0px;
+        }
+        label {
+            font-family: "Fredoka One";
+        }
+    }
+    .class-stats {
+        opacity: 0;
+        transition: 0.4s opacity;
+        text-align: center;
+        display: grid;
+        column-gap: 8px;
+        row-gap: 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        div {
+            background-color: $secondaryColor;
+            padding: 8px;
+            border-radius: 6px;
+        }
+    }
+}
+.equipment,
+.enhancments {
+    padding-top: 50px;
+    #wLM {
+        background-color: $primaryColor;
+        color: white;
+        padding: 12px;
+        border: 0px;
+        font-family: "Fredoka One";
+        font-weight: 100;
+        font-size: 18px;
+        outline: none;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 6px;
+    }
+}
+
+.equipment {
+    margin-right: 60px;
+    .equiments-grid {
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+        .eq {
+            width: 100%;
+            background-color: $primaryColor;
+            border-radius: 6px;
+            height: fit-content;
+            h2 {
+                width: 100%;
+                padding-top: 13px;
+                padding-bottom: 13px;
+                text-align: center;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                margin: 0px;
+                background-color: $secondaryColor;
+            }
+            .body {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .item {
+                    padding: 15px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.enhancments {
+    margin-left: 60px;
+    .enhancments-grid {
+        display: grid;
+        row-gap: 30px;
+    }
+    h2 {
+        margin-bottom: 14px;
+    }
+    .enhancment {
+        width: 100%;
+        background-color: $primaryColor;
+        border-radius: 6px;
+        height: fit-content;
+        h2 {
+            width: 100%;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            text-align: center;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin: 0px;
+            background-color: $secondaryColor;
+        }
+        .body {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            .item {
+                padding: 15px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.final {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.total-pt {
+    padding: 13px;
+    width: 100%;
+    border-radius: 0px;
+    font-size: 20px;
+    font-weight: 100;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: "Fredoka One", sans-serif;
+    color: white;
+    z-index: 1;
+    transition: 0.4s;
+    border: 0px;
+    z-index: 0;
+
+    &::before {
+        @include btnPseudoElement();
+        background-color: $primaryColor;
+        width: 100%;
+        z-index: -2;
+    }
+
+    &::after {
+        @include btnPseudoElement();
+        background-color: $secondaryColor;
+        width: 0%;
+        z-index: -1;
+    }
+}
+
+.total-pt:hover {
+    &::after {
+        width: 100%;
+    }
+}
+
+.results {
+    overflow-y: auto;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: $secondaryColor;
+    margin-top: -100vh;
+    transition: 0.8s margin;
+
+    .body {
+        padding-top: 50px;
+        width: 80vw;
+        margin: auto;
+        padding-bottom: 50px;
+        h1 {
+            font-size: 60px;
+        }
+    }
+
+    .submit-stats {
+        margin-top: 20px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 20px;
+        div {
+            background-color: $primaryColor;
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 20px;
+        }
+    }
+}
+
+.goBack {
+    position: fixed;
+    background-color: black;
+    z-index: 1000;
+    bottom: 20px;
+    font-size: 40px;
+    padding: 10px;
+    padding-right: 6px;
+    border-radius: 6px;
+    width: 80px;
+    text-align: center;
+    right: 20px;
+    cursor: pointer;
+    transition: 0.6s;
+    opacity: 0;
+}
+
+@media (max-width: 1200px) {
+    .results .submit-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 1000px) {
+    .section {
+        flex-direction: column;
+    }
+    .stats,
+    .equipment {
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .classes,
+    .enhancments {
+        margin-left: 0px;
+        margin-bottom: 30px;
+    }
+    .container {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .results .submit-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .classes .classes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .classes .class-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.floatingPoints {
+    z-index: 100;
+    position: fixed;
+    bottom: 15px;
+    background-color: black;
+    padding: 20px;
+    right: 20px;
+    font-size: 25px;
+    border-radius: 6px;
+}

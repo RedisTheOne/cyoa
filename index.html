@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Markus' CYOA</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="./style/style.css">
+
+    <!--The 2 first texts-->
+    <div class="banner container">
+        <h1>CYOA</h1>
+        <h2 id="pointsHeader" class="floatingPoints">
+            Points: <span id="points"></span>
+        </h2>
+        <p>
+            It is <strong>highly recommended</strong> <i>(it doesen't work otherwise)</i> to do the categories in this
+            sequence:<br> stats > class > equipment => submit
+        </p>
+    </div>
+
+    <div class="section container">
+        <!--Choose your stats-->
+        <div class="stats">
+            <div class="header">
+                <h2>Stats</h2>
+                <h3>1 Point can raise any stat by 1</h3>
+            </div>
+            <div class="stat strength">
+                <p class="stat-title">Strength</p>
+                <input type="number" value=1 min="1" onchange="getPoints()" class="strength-pt input-stats">
+            </div>
+            <div class="stat endurance">
+                <p class="stat-title">Endurance</p>
+                <input type="number" value=1 min="1" onchange="getPoints()" class="endurance-pt input-stats">
+            </div>
+            <div class="stat dexterity">
+                <p class="stat-title">Dexterity</p>
+                <input type="number" value=1 min="1" onchange="getPoints()" class="dexterity-pt input-stats">
+            </div>
+            <div class="stat agility">
+                <p class="stat-title">Aglility</p>
+                <input type="number" value=1 min="1" onchange="getPoints()" class="agility-pt input-stats">
+            </div>
+            <div class="stat magic">
+                <p class="stat-title">Magic</p>
+                <input type="number" value=1 min="1" onchange="getPoints()" class="magic-pt input-stats">
+            </div>
+        </div>
+
+        <!--Choose your class-->
+        <div class="classes">
+            <div class="header">
+                <h2>Classes</h2>
+                <h3>(4 points each, Mandatory, Can only pick one)</h3>
+            </div>
+            <div class="classes-grid">
+                <div class="class"><input type="radio" name="class" id="knight" class="radio r-class"> <label
+                        for="class">Knight</label>
+                    <p>1.5x Str; 1.5x End; 1.5x Agl </p>
+                </div>
+                <div class="class"><input type="radio" name="class" id="rouge" class="radio r-class"> <label
+                        for="class">Rouge</label>
+                    <p>1.5x Dex; 2x Agl</p>
+                </div>
+                <div class="class"><input type="radio" name="class" id="tank" class="radio r-class"> <label
+                        for="class">Tank</label>
+                    <p>3x End</p>
+                </div>
+                <div class="class"><input type="radio" name="class" id="duelist" class="radio r-class"> <label
+                        for="class">Duelist</label>
+                    <p>2x Dex; 1.5x Agl </p>
+                </div>
+                <div class="class"><input type="radio" name="class" id="mage" class="radio r-class"> <label
+                        for="class">Mage</label>
+                    <p>2.5x Mag</p>
+                </div>
+                <div class="class"><input type="radio" name="class" id="berserker" class="radio r-class"> <label
+                        for="class">Berserker</label>
+                    <p>2x Str; 1.5x End</p>
+                </div>
+            </div>
+
+            <p class="class-stats"></p>
+        </div>
+    </div>
+
+    <div class="section container">
+        <div class="equipment">
+            <h2>Equipment</h2>
+            <p>(for each pt of Str get +4 Wgh capacity)</p>
+            <p>Power: <span id="power"></span></p>
+            <p>Weight: <span id="weight"></span></p>
+            <button id="wLM">Show weight limit: <span id="weight-limit"></span></button>
+    
+            <div class="equiments-grid">
+                <div class="eq">
+                    <h2>Armor</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;">
+                            <div>Light Armor <input type="checkbox" id="light-armor" name="armor" class="equips"></div>
+                            <div>1 Pwr</div>
+                            <div>4 Wgh</div>
+                        </div>
+                        <div class="item" style="border-bottom: 1px solid white;">
+                            <div>Medium Armor <input type="checkbox" id="medium-armor" name="armor" class="equips"></div>
+                            <div>3 Pwr</div>
+                            <div>7 Wgh</div>
+                        </div>
+                        <div class="item" style="border-right: 1px solid white;">
+                            <div>Mage Robes <input type="checkbox" id="mage-robes" name="armor" class="equips"></div>
+                            <div>3 Pwr</div>
+                            <div>2 Wgh (Needs magic >= 5)</div>
+                        </div>
+                        <div class="item">
+                            <div>Heavy Armor <input type="checkbox" id="heavy-armor" name="armor" class="equips"></div>
+                            <div>5 Pwr</div>
+                            <div>10 Wgh (Needs strength >= 7)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eq">
+                    <h2>Shields</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;">
+                            <div>Small Shield <input type="checkbox" id="small-shield" name="shields" class="equips"></div>
+                            <div>1 Pwr</div>
+                            <div>3 Wgh</div>
+                        </div>
+                        <div class="item" style="border-bottom: 1px solid white;">
+                            <div>Medium Shield <input type="checkbox" id="medium-shield" name="shields" class="equips"></div>
+                            <div>3 Pwr</div>
+                            <div>7 Wgh</div>
+                        </div>
+                        <div class="item" style="border-right: 1px solid white;">
+                            <div>Mana Shield <input type="checkbox" id="mana-shield" name="shields" class="equips"></div>
+                            <div>4 Pwr</div>
+                            <div>- Wgh ( Needs magic >= 9)</div>
+                        </div>
+                        <div class="item">
+                            <div>Tower Shield <input type="checkbox" id="tower-shield" name="shields" class="equips"></div>
+                            <div>5 Pwr</div>
+                            <div>10 Wgh ( Needs stength >= 10)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eq">
+                    <h2>Wepons</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;">
+                            <div>Broadsword <input type="checkbox" id="broadsword" name="weapons" class="equips"></div>
+                            <div>3 Pwr</div>
+                            <div>6 Wgh</div>
+                        </div>
+                        <div class="item" style="border-bottom: 1px solid white;">
+                            <div>Crossbow <input type="checkbox" id="crossbow" name="weapons" class="equips"></div>
+                            <div>3 Pwr</div>
+                            <div>8 Wgh</div>
+                        </div>
+                        <div class="item" style="border-right: 1px solid white;">
+                            <div>Rapier <input type="checkbox" id="rapier" name="weapons" class="equips"></div>
+                            <div>2 Pwr</div>
+                            <div>3 Wgh (3 Pwr if Dex >= 5)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="eq">
+                    <h2>Magic Wepons</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white">
+                            <div>Magic Wand <input type="checkbox" id="magic-wand" name="magic-weapons" class="equips"></div>
+                            <div>2 Pwr</div>
+                            <div>1 Wgh (Needs magic >= 4)</div>
+                        </div>
+                        <div class="item">
+                            <div>Magic Staff <input type="checkbox" id="magic-staff" name="magic-weapons" class="equips"></div>
+                            <div>4 Pwr</div>
+                            <div>3 Wgh (Needs magic >= 7)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </div>
+        <!-- <div class="enchantments">
+            <h2>Enchantments</h2>
+            <p>Sharper & Sturdier (Weapons): 3pt 2x Pwr <input type="radio" id="tower-shield" name="enchantments"
+                    class="radio"><br>
+                Resistant (Armor & Shields) : 3pt 2x Pwr <input type="radio" id="tower-shield" name="enchantments"
+                    class="radio"><br>
+                Magic Channeling Efficency (Wands, Staffs & Robes): 3pt 2x Pwr <input type="radio" id="tower-shield"
+                    name="enchantments" class="radio">
+            </p>
+        </div> -->
+        <!--Enhancments-->
+        <div class="enhancments">
+            <h2>Enhancments</h2>
+            <div class="enhancments-grid">
+                <div class="enhancment">
+                    <h2>Blade Metal</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;"><p>Iron 0pt <input type="radio" id="iron-blade" name="blade" class="radio"></p></div>
+                        <div class="item" style="border-bottom: 1px solid white;"><p>Steel 2pt 1.5x Pwr <input type="radio" id="steel-blade" name="blade" class="radio"></p></div>
+                        <div style="border-right: 1px solid white;" class="item"><p>Silver 4pt 2x Pwr <input type="radio" id="silver-blade" name="blade" class="radio"></p></div>
+                    </div>
+                </div>
+                <div class="enhancment">
+                    <h2>Armor and Shield metal</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;"><p>Iron 0pt <input type="radio" id="iron-metal" name="metal" class="radio"></p>
+                        </div>
+                        <div class="item" style="border-bottom: 1px solid white;"><p>Silver 4pt 2x Pwr <input type="radio" id="silver-metal" name="metal" class="radio"></p></div>
+                        <div style="border-right: 1px solid white;" class="item"><p>Adamantine 6pt 3x Pwr <input type="radio" id="adamantine-metal" name="metal" class="radio"></p></div>
+                    </div>
+                </div>
+                <div class="enhancment">
+                    <h2>Magic alloys</h2>
+                    <div class="body">
+                        <div class="item" style="border-right: 1px solid white; border-bottom: 1px solid white;"><p>Enchanted Wood 1pt <input type="radio" id="wood-alloy" name="alloy" class="radio"></p></div>
+                        <div class="item" style="border-bottom: 1px solid white;"><p>Small Magic Stone Core 3pt 1.5x Pwr <input type="radio" id="small-alloy" name="alloy" class="radio"></p></div>
+                        <div style="border-right: 1px solid white;" class="item"><p>Medium Magic Stone Core 5pt 3x Pwr <input type="radio" id="medium-alloy" name="alloy" class="radio"></p></div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+    
+
+    <!--SUBMIT-->
+    <div class="container final">
+        <button class="total-pt">SUBMIT</button>
+    </div>
+
+    <div class="results">
+        <div class="body">
+            <h1>Results</h1>
+            <p id="maxProwess"></p>
+            <div class="submit-stats"></div>
+        </div>
+    </div>
+
+    <div class="goBack">
+        <i class="fa fa-sign-out icon"></i>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="scrollEvents.js"></script>
+</body>
+
+</html>
